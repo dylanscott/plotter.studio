@@ -2,12 +2,25 @@
   "name": "plotter.studio",
   "version": "0.0.0",
   "private": true,
-  "workspaces": ["plotter-api", "plotter-wasm", "ui"],
+  "workspaces": [
+    "plotter-api",
+    "plotter-wasm",
+    "ui"
+  ],
   "author": "Dylan Scott <dylan.scott@gmail.com>",
   "license": "Unlicense",
   "packageManager": "pnpm@10.27.0",
   "devDependencies": {
     "@biomejs/biome": "^2.3.11",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.rs": "rustfmt",
+    "*.ts": "npx @biomejs/biome format --write"
   }
 }
