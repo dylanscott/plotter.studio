@@ -1,5 +1,5 @@
-import { Group } from "./geometry";
-import { Length } from "./units";
+import type { Group } from "./geometry";
+import type { Length } from "./units";
 
 // ============================================================================
 // WASM Module Interface

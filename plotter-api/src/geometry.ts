@@ -1,4 +1,4 @@
-import { Length } from "./units";
+import type { Length } from "./units";
 
 /**
  * 2D point in inches (standard unit used for geometry)

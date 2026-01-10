@@ -21,6 +21,6 @@
   },
   "lint-staged": {
     "*.rs": "rustfmt",
-    "*.ts": "npx @biomejs/biome format --write"
+    "*.ts": ["npx biome lint --fix", "npx biome format --write"]
   }
 }
