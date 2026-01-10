@@ -1,0 +1,4 @@
+include = ["**/*.toml"]
+
+[formatting]
+align_entries = true

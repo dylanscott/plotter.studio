@@ -21,6 +21,7 @@
   },
   "lint-staged": {
     "*.rs": "rustfmt",
-    "*.ts": ["npx biome lint --fix", "npx biome format --write"]
+    "*.ts": ["npx biome lint --fix", "npx biome format --write"],
+    "*.toml": ["taplo check", "taplo fmt"]
   }
 }

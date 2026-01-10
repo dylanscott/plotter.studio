@@ -1,5 +1,5 @@
 [package]
-name = "plotter-wasm"
+name    = "plotter-wasm"
 edition = "2024"
 publish = false
 
