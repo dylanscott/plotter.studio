@@ -1,0 +1,8 @@
+{
+  "name": "plotter-wasm",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "cargo build"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "plotter.studio",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": ["plotter-wasm", "ui"],
+  "author": "Dylan Scott <dylan.scott@gmail.com>",
+  "license": "Unlicense",
+  "packageManager": "pnpm@10.27.0"
+}

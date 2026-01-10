@@ -1,0 +1,17 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .: {}
+
+  plotter-wasm: {}
+
+  ui:
+    dependencies:
+      plotter-wasm:
+        specifier: workspace:*
+        version: link:../plotter-wasm
