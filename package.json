@@ -2,8 +2,12 @@
   "name": "plotter.studio",
   "version": "0.0.0",
   "private": true,
-  "workspaces": ["plotter-wasm", "ui"],
+  "workspaces": ["plotter-api", "plotter-wasm", "ui"],
   "author": "Dylan Scott <dylan.scott@gmail.com>",
   "license": "Unlicense",
-  "packageManager": "pnpm@10.27.0"
+  "packageManager": "pnpm@10.27.0",
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.11",
+    "typescript": "^5.9.3"
+  }
 }
