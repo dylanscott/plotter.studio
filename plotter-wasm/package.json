@@ -2,7 +2,9 @@
   "name": "plotter-wasm",
   "version": "0.0.0",
   "private": true,
+  "main": "pkg/index.js",
+  "types": "pkg/index.d.ts",
   "scripts": {
-    "build": "cargo build"
+    "build": "wasm-pack build --out-name index"
   }
 }

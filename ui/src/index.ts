@@ -1,1 +1,3 @@
-alert("Hello!");
+import { greet } from "plotter-wasm";
+
+greet("WASM");
