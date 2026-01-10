@@ -1,0 +1,8 @@
+[package]
+name = "plotter"
+edition = "2024"
+publish = false
+
+[dependencies]
+uom = "0.37.0"
+usvg = "0.45.1"

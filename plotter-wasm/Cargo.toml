@@ -1,0 +1,9 @@
+[package]
+name = "plotter-wasm"
+edition = "2024"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
