@@ -20,8 +20,15 @@
     "prepare": "husky"
   },
   "lint-staged": {
+    "*.json": "npx biome format --write",
     "*.rs": "rustfmt",
-    "*.ts": ["npx biome lint --fix", "npx biome format --write"],
-    "*.toml": ["taplo check", "taplo fmt"]
+    "*.ts": [
+      "npx biome lint --fix",
+      "npx biome format --write"
+    ],
+    "*.toml": [
+      "taplo check",
+      "taplo fmt"
+    ]
   }
 }
