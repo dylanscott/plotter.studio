@@ -3,6 +3,12 @@
   "include": ["src"],
   "compilerOptions": {
     "lib": ["DOM", "ES2020"],
-    "moduleResolution": "bundler"
+    "moduleResolution": "bundler",
+    "verbatimModuleSyntax": true,
+    "plugins": [
+      {
+        "name": "typescript-svelte-plugin"
+      }
+    ]
   }
 }

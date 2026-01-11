@@ -1,3 +1,7 @@
-import { greet } from "plotter-wasm";
+import { mount } from "svelte";
+import App from "./App.svelte";
 
-greet("WASM");
+const app = mount(App, {
+  target: document.body,
+  props: { some: "property" },
+});
