@@ -6,11 +6,11 @@
 
 ## Packages
 
-The application is written in a mix of TypeScript and Rust, and split into a number of Node packages and crates:
-- ui (node): The main web application package, built with Svelte 5 and bundled with rspack
-- plotter-api (node): TypeScript types and utilities providing an ergonomic API wrapping the Rust functionality
-- plotter-rs (crate): Rust library implementing SVG path simplification and plotter motion planning logic
-- plotter-wasm (both a crate and a node package): Exposes plotter-rs functionality with wasm-bindgen
+The application is written in a mix of TypeScript and Rust, and split into a few Node packages and crates:
+- ui (node): The main web application package, built with Svelte 5 and bundled with rsbuild
+- plotter-api (node): TypeScript types and utilities providing additional ergonomics around the WASM module
+- plotter-rs (crate): Rust library implementing SVG parsing, path simplification, and plotter motion planning
+- plotter-wasm (both a crate and a node package): Uses wasm-bindgen to expose plotter-rs functionality as a WASM module
 
 ## Required Patterns
 
