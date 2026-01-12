@@ -1,0 +1,3 @@
+# https://developer.mozilla.org/en-US/docs/Web/API/Web_Serial_API#browser_compatibility
+chrome >= 89
+edge >= 89
