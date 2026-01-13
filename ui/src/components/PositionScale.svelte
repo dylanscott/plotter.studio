@@ -25,16 +25,16 @@
 </script>
 
 <div class="position-scale">
-  <div class="row">
+  <div class="grid">
     <label class="label" for="x-offset">X Offset</label>
-    <div class="input-group">
-      <button
-        class="adjust-btn"
-        type="button"
-        onclick={() => (xOffset = adjustValue(xOffset, -0.1))}
-      >
-        -
-      </button>
+    <button
+      class="adjust-btn"
+      type="button"
+      onclick={() => (xOffset = adjustValue(xOffset, -0.1))}
+    >
+      -
+    </button>
+    <div class="input-wrapper">
       <input
         id="x-offset"
         type="number"
@@ -43,26 +43,24 @@
         step="0.1"
       />
       <span class="unit">in</span>
-      <button
-        class="adjust-btn"
-        type="button"
-        onclick={() => (xOffset = adjustValue(xOffset, 0.1))}
-      >
-        +
-      </button>
     </div>
-  </div>
+    <button
+      class="adjust-btn"
+      type="button"
+      onclick={() => (xOffset = adjustValue(xOffset, 0.1))}
+    >
+      +
+    </button>
 
-  <div class="row">
     <label class="label" for="y-offset">Y Offset</label>
-    <div class="input-group">
-      <button
-        class="adjust-btn"
-        type="button"
-        onclick={() => (yOffset = adjustValue(yOffset, -0.1))}
-      >
-        -
-      </button>
+    <button
+      class="adjust-btn"
+      type="button"
+      onclick={() => (yOffset = adjustValue(yOffset, -0.1))}
+    >
+      -
+    </button>
+    <div class="input-wrapper">
       <input
         id="y-offset"
         type="number"
@@ -71,26 +69,24 @@
         step="0.1"
       />
       <span class="unit">in</span>
-      <button
-        class="adjust-btn"
-        type="button"
-        onclick={() => (yOffset = adjustValue(yOffset, 0.1))}
-      >
-        +
-      </button>
     </div>
-  </div>
+    <button
+      class="adjust-btn"
+      type="button"
+      onclick={() => (yOffset = adjustValue(yOffset, 0.1))}
+    >
+      +
+    </button>
 
-  <div class="row">
     <label class="label" for="scale">Scale</label>
-    <div class="input-group">
-      <button
-        class="adjust-btn"
-        type="button"
-        onclick={() => (scale = adjustValue(scale, -0.1, 0.1))}
-      >
-        -
-      </button>
+    <button
+      class="adjust-btn"
+      type="button"
+      onclick={() => (scale = adjustValue(scale, -0.1, 0.1))}
+    >
+      -
+    </button>
+    <div class="input-wrapper">
       <input
         id="scale"
         type="number"
@@ -99,14 +95,14 @@
         step="0.1"
         min="0.1"
       />
-      <button
-        class="adjust-btn"
-        type="button"
-        onclick={() => (scale = adjustValue(scale, 0.1))}
-      >
-        +
-      </button>
     </div>
+    <button
+      class="adjust-btn"
+      type="button"
+      onclick={() => (scale = adjustValue(scale, 0.1))}
+    >
+      +
+    </button>
   </div>
 
   <div class="actions">
@@ -123,22 +119,17 @@
     font-family: var(--main-font);
   }
 
-  .row {
-    display: flex;
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    gap: 8px 4px;
     align-items: center;
-    justify-content: space-between;
   }
 
   .label {
     font-size: 12px;
     color: var(--text-secondary);
     text-transform: uppercase;
-  }
-
-  .input-group {
-    display: flex;
-    align-items: center;
-    gap: 4px;
   }
 
   .adjust-btn {
@@ -149,7 +140,6 @@
     color: var(--text-primary);
     cursor: pointer;
     font-family: var(--main-font);
-
     font-size: 14px;
     display: flex;
     align-items: center;
@@ -161,16 +151,32 @@
     background: var(--bg-secondary);
   }
 
-  .number-input {
-    width: 60px;
+  .input-wrapper {
+    display: flex;
+    align-items: center;
     height: 24px;
-    padding: 0 4px;
     border: 1px solid var(--border-subtle);
     background: var(--bg-surface);
+  }
+
+  .input-wrapper:focus-within {
+    border-color: var(--border-emphasis);
+  }
+
+  .number-input {
+    width: 48px;
+    height: 100%;
+    padding: 0 4px;
+    border: none;
+    background: transparent;
     color: var(--text-primary);
     font-family: var(--main-font);
     font-size: 12px;
     text-align: right;
+  }
+
+  .number-input:focus {
+    outline: none;
   }
 
   .number-input::-webkit-inner-spin-button,
@@ -185,9 +191,10 @@
   }
 
   .unit {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--text-tertiary);
-    min-width: 16px;
+    padding-right: 6px;
+    user-select: none;
   }
 
   .actions {
