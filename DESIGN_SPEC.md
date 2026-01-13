@@ -568,13 +568,6 @@ App.svelte
 
 ### Key Svelte Patterns
 
-- **Stores** for shared state:
-  - `plotterStore` (connection status, model info)
-  - `fileStore` (SVG data, paths, tree structure)
-  - `penStore` (pen library, layers, assignments)
-  - `plotStore` (plot status, progress, settings)
-  - `uiStore` (expanded sections, visibility toggles)
-
 - **Two-way bindings** for form inputs
 - **Reactive statements** for computed values (path counts, estimated time)
 - **Component composition** for reusability (CollapsibleSection, buttons, inputs)
