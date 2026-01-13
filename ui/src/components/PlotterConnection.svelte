@@ -1,29 +1,29 @@
 <script lang="ts">
   type ConnectionState =
-    | 'disconnected'
-    | 'idle'
-    | 'manual-positioning'
-    | 'homing'
-    | 'plotting'
-    | 'paused'
-    | 'error';
+    | "disconnected"
+    | "idle"
+    | "manual-positioning"
+    | "homing"
+    | "plotting"
+    | "paused"
+    | "error";
 
-  let connectionState: ConnectionState = $state('disconnected');
+  let connectionState: ConnectionState = $state("disconnected");
 
   function handleConnect() {
-    connectionState = 'idle';
+    connectionState = "idle";
   }
 
   function handleDisconnect() {
-    connectionState = 'disconnected';
+    connectionState = "disconnected";
   }
 
   function handleManualPositioning() {
-    console.log('Manual positioning clicked');
+    console.log("Manual positioning clicked");
   }
 
   function handleAutoHome() {
-    console.log('Auto home clicked');
+    console.log("Auto home clicked");
   }
 </script>
 
@@ -48,7 +48,11 @@
     <h3 class="subsection-label">Alignment</h3>
 
     <div class="button-group">
-      <button type="button" class="action-button" onclick={handleManualPositioning}>
+      <button
+        type="button"
+        class="action-button"
+        onclick={handleManualPositioning}
+      >
         Manual Positioning
       </button>
       <button type="button" class="action-button" onclick={handleAutoHome}>

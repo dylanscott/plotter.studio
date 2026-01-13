@@ -1,6 +1,6 @@
 <script lang="ts">
-  import CanvasContainer from './components/CanvasContainer.svelte';
-  import ControlPanel from './components/ControlPanel.svelte';
+  import CanvasContainer from "./components/CanvasContainer.svelte";
+  import ControlPanel from "./components/ControlPanel.svelte";
 </script>
 
 <div class="app">

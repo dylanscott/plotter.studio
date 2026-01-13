@@ -1,14 +1,14 @@
 <script lang="ts">
-  import PlotterConnection from './PlotterConnection.svelte';
-  import PlotStatus from './PlotStatus.svelte';
-  import CollapsibleSection from './CollapsibleSection.svelte';
-  import PositionScale from './PositionScale.svelte';
-  import Layers from './Layers.svelte';
-  import PlotSettings from './PlotSettings.svelte';
+  import PlotterConnection from "./PlotterConnection.svelte";
+  import PlotStatus from "./PlotStatus.svelte";
+  import CollapsibleSection from "./CollapsibleSection.svelte";
+  import PositionScale from "./PositionScale.svelte";
+  import Layers from "./Layers.svelte";
+  import PlotSettings from "./PlotSettings.svelte";
 
-  type SectionId = 'position-scale' | 'layers' | 'plot-settings';
+  type SectionId = "position-scale" | "layers" | "plot-settings";
 
-  let expandedSection: SectionId | null = $state('position-scale');
+  let expandedSection: SectionId | null = $state("position-scale");
 
   function toggleSection(sectionId: SectionId) {
     expandedSection = expandedSection === sectionId ? null : sectionId;

@@ -48,10 +48,12 @@
   function formatTimeRemaining(currentProgress: number): string {
     // Mock: assume 23m 45s total (1425 seconds)
     const totalSeconds = 1425;
-    const remainingSeconds = Math.round(totalSeconds * (1 - currentProgress / 100));
+    const remainingSeconds = Math.round(
+      totalSeconds * (1 - currentProgress / 100),
+    );
     const minutes = Math.floor(remainingSeconds / 60);
     const seconds = remainingSeconds % 60;
-    return `${minutes}m ${seconds.toString().padStart(2, '0')}s`;
+    return `${minutes}m ${seconds.toString().padStart(2, "0")}s`;
   }
 </script>
 
@@ -84,7 +86,7 @@
     </div>
 
     <label class="checkbox-row">
-      <input type="checkbox" bind:checked={dryRun} />
+      <input type="checkbox" bind:checked={dryRun}>
       <span>Dry Run</span>
     </label>
 
@@ -191,7 +193,7 @@
     cursor: pointer;
   }
 
-  .checkbox-row input[type='checkbox'] {
+  .checkbox-row input[type="checkbox"] {
     cursor: pointer;
   }
 

@@ -7,7 +7,7 @@
     current: number,
     delta: number,
     min: number = -Infinity,
-    max: number = Infinity
+    max: number = Infinity,
   ): number {
     const newValue = Math.round((current + delta) * 10) / 10;
     return Math.max(min, Math.min(max, newValue));
@@ -20,7 +20,9 @@
   }
 
   function center() {
-    console.log('CENTER: needs actual SVG dimensions to calculate center position');
+    console.log(
+      "CENTER: needs actual SVG dimensions to calculate center position",
+    );
   }
 </script>
 
@@ -41,7 +43,7 @@
         class="number-input"
         bind:value={xOffset}
         step="0.1"
-      />
+      >
       <span class="unit">in</span>
     </div>
     <button
@@ -67,7 +69,7 @@
         class="number-input"
         bind:value={yOffset}
         step="0.1"
-      />
+      >
       <span class="unit">in</span>
     </div>
     <button
@@ -94,7 +96,7 @@
         bind:value={scale}
         step="0.1"
         min="0.1"
-      />
+      >
     </div>
     <button
       class="adjust-btn"
@@ -185,7 +187,7 @@
     margin: 0;
   }
 
-  .number-input[type='number'] {
+  .number-input[type="number"] {
     appearance: textfield;
     -moz-appearance: textfield;
   }

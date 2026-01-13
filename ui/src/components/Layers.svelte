@@ -4,15 +4,17 @@
 
   // Mock pens
   let pens = $state<Pen[]>([
-    { id: 'pen1', name: 'Black 0.5mm', color: '#1a2332', size: 0.5 },
-    { id: 'pen2', name: 'Red 0.3mm', color: '#cc0033', size: 0.3 },
+    { id: "pen1", name: "Black 0.5mm", color: "#1a2332", size: 0.5 },
+    { id: "pen2", name: "Red 0.3mm", color: "#cc0033", size: 0.3 },
   ]);
 
   // Mock layers
-  let layers = $state<Layer[]>([{ id: 'layer1', penId: 'pen1', visible: true }]);
+  let layers = $state<Layer[]>([
+    { id: "layer1", penId: "pen1", visible: true },
+  ]);
 
   function handleManagePenLibrary() {
-    console.log('Manage pen library clicked');
+    console.log("Manage pen library clicked");
   }
 
   function addLayer() {
@@ -56,7 +58,10 @@
 
         <div class="layer-controls">
           <div class="pen-select-row">
-            <span class="color-swatch" style="background-color: {pen?.color ?? '#888'}"></span>
+            <span
+              class="color-swatch"
+              style="background-color: {pen?.color ?? '#888'}"
+            ></span>
             <select class="pen-select" bind:value={layer.penId}>
               {#each pens as p (p.id)}
                 <option value={p.id}>{p.name}</option>
@@ -69,11 +74,11 @@
     {/each}
   </div>
 
-  <button type="button" class="action-button" onclick={addLayer}>+ Add Layer</button>
+  <button type="button" class="action-button" onclick={addLayer}>
+    + Add Layer
+  </button>
 
-  <div class="divider">
-    <span class="divider-label">Path Assignment</span>
-  </div>
+  <div class="divider"><span class="divider-label">Path Assignment</span></div>
 
   <div class="path-tree">
     <div class="tree-item">

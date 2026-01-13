@@ -1,18 +1,22 @@
 <script lang="ts">
   // Speed & Quality
-  let handlingMode = $state<'technical' | 'handwriting' | 'sketching' | 'constant'>('technical');
-  let acceleration = $state<'maximum' | 'high' | 'standard' | 'slow'>('standard');
-  let penRaisingSpeed = $state<'maximum' | 'standard' | 'slow' | 'very-slow' | 'dead-slow'>(
-    'standard'
+  let handlingMode = $state<
+    "technical" | "handwriting" | "sketching" | "constant"
+  >("technical");
+  let acceleration = $state<"maximum" | "high" | "standard" | "slow">(
+    "standard",
   );
-  let penLoweringSpeed = $state<'maximum' | 'standard' | 'slow' | 'very-slow' | 'dead-slow'>(
-    'standard'
-  );
+  let penRaisingSpeed = $state<
+    "maximum" | "standard" | "slow" | "very-slow" | "dead-slow"
+  >("standard");
+  let penLoweringSpeed = $state<
+    "maximum" | "standard" | "slow" | "very-slow" | "dead-slow"
+  >("standard");
 
   // Optimization
   let randomizeStart = $state(false);
   // @ts-ignore
-  let optimization = $state<'none' | 'least' | 'basic' | 'full'>('full');
+  let optimization = $state<"none" | "least" | "basic" | "full">("full");
 </script>
 
 <div class="plot-settings">
@@ -66,7 +70,7 @@
     <h3 class="subsection-label">Optimization</h3>
 
     <label class="checkbox-row">
-      <input type="checkbox" class="checkbox" bind:checked={randomizeStart} />
+      <input type="checkbox" class="checkbox" bind:checked={randomizeStart}>
       <span class="checkbox-label">Randomize Closed Path Start</span>
     </label>
 
@@ -80,7 +84,7 @@
           value="none"
           class="radio"
           bind:group={optimization}
-        />
+        >
         <span class="radio-content">
           <span class="radio-label">None</span>
           <span class="radio-description">Preserve path order</span>
@@ -94,7 +98,7 @@
           value="least"
           class="radio"
           bind:group={optimization}
-        />
+        >
         <span class="radio-content">
           <span class="radio-label">Least</span>
           <span class="radio-description">Connect adjoining paths</span>
@@ -108,7 +112,7 @@
           value="basic"
           class="radio"
           bind:group={optimization}
-        />
+        >
         <span class="radio-content">
           <span class="radio-label">Basic</span>
           <span class="radio-description">Allow path reordering</span>
@@ -122,7 +126,7 @@
           value="full"
           class="radio"
           bind:group={optimization}
-        />
+        >
         <span class="radio-content">
           <span class="radio-label">Full</span>
           <span class="radio-description">Allow path reversal</span>

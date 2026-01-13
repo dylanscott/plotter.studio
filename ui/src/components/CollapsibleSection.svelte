@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Snippet } from 'svelte';
+  import type { Snippet } from "svelte";
 
   interface Props {
     title: string;
@@ -18,9 +18,7 @@
   </button>
 
   {#if expanded}
-    <div class="content">
-      {@render children()}
-    </div>
+    <div class="content">{@render children()}</div>
   {/if}
 </div>
 
