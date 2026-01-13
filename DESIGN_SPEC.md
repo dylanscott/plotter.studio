@@ -44,73 +44,25 @@ The application supports both light and dark themes to match different plotting 
 
 ### Color Palette
 
-The application uses CSS custom properties for theming, allowing easy switching between light and dark modes.
+The application uses CSS custom properties for theming, allowing easy switching between light and dark modes. All color values are defined in `ui/src/theme.css` (the source of truth).
 
 **Light Theme** (default):
-```css
-/* Background & Surface */
---bg-primary: #f0f4f8;        /* Subtle blue-tinted white */
---bg-secondary: #e8eef4;      /* Slightly darker surface */
---bg-surface: #ffffff;        /* Pure white for panels */
-
-/* Accent & Interactive */
---accent-primary: #0066cc;    /* Darker blue for contrast */
---accent-bright: #003d7a;     /* Deep blue for emphasis */
---accent-attention: #cc8800;  /* Darker gold for warnings */
-
-/* Grid & Borders */
---grid-line: rgba(0, 102, 204, 0.08);   /* Very subtle grid */
---border-subtle: rgba(0, 60, 122, 0.15);
---border-emphasis: rgba(0, 102, 204, 0.3);
-
-/* Text */
---text-primary: #1a2332;
---text-secondary: rgba(26, 35, 50, 0.7);
---text-tertiary: rgba(26, 35, 50, 0.5);
-
-/* Canvas */
---canvas-bg: #f8fbff;         /* Very subtle blue tint (paper simulation) */
---canvas-frame: #0066cc;      /* Frame outline */
---canvas-path-default: #1a2332; /* Dark paths on light background */
-
-/* States */
---state-plotting: #00aa55;    /* Darker green for light theme */
---state-paused: #ff8800;      /* Orange */
---state-error: #cc0033;       /* Deep red */
-```
+- Subtle blue-tinted backgrounds to simulate white paper
+- Darker blue accents for sufficient contrast
+- Dark text on light surfaces
 
 **Dark Theme**:
-```css
-/* Background & Surface */
---bg-primary: #0a1628;        /* Deep blueprint navy */
---bg-secondary: #0d1b2a;      /* Slightly lighter panel */
---bg-surface: #1a2332;        /* Control panel sections */
+- Deep navy backgrounds for classic blueprint aesthetic
+- Cyan accents matching traditional blueprint coloring
+- Light text on dark surfaces
 
-/* Accent & Interactive */
---accent-primary: #00d9ff;    /* Primary blueprint cyan */
---accent-bright: #e0f7ff;     /* Bright white for emphasis */
---accent-attention: #ffd700;  /* Warning/attention (sparingly) */
-
-/* Grid & Borders */
---grid-line: rgba(0, 217, 255, 0.1);    /* Subtle blueprint grid */
---border-subtle: rgba(224, 247, 255, 0.15);
---border-emphasis: rgba(0, 217, 255, 0.4);
-
-/* Text */
---text-primary: #e0f7ff;
---text-secondary: rgba(224, 247, 255, 0.6);
---text-tertiary: rgba(224, 247, 255, 0.4);
-
-/* Canvas */
---canvas-bg: #0a1628;         /* Same as bg-primary */
---canvas-frame: #e0f7ff;      /* Frame outline */
---canvas-path-default: #00d9ff; /* Default path color */
-
-/* States */
---state-plotting: #00ff88;    /* Active plotting green */
---state-paused: #ffaa00;      /* Paused orange */
---state-error: #ff3366;       /* Error red */
-```
+Both themes define variables for:
+- **Background & Surface**: Primary, secondary, and surface backgrounds
+- **Accent & Interactive**: Primary accent, bright emphasis, attention/warning
+- **Grid & Borders**: Subtle grid lines, border variations
+- **Text**: Primary, secondary, and tertiary text colors
+- **Canvas**: Background, frame outline, default path color
+- **States**: Plotting (green), paused (orange), error (red)
 
 **Theme Toggle**:
 - Add theme toggle button in top-right corner of control panel
@@ -774,36 +726,18 @@ This deferred design allows us to focus on the UI and SVG parsing workflow first
 
 ### Theme System Implementation
 
-The theme system uses CSS custom properties for all colors and switches between light/dark values:
+The theme system uses CSS custom properties defined in `ui/src/theme.css`:
 
-```css
-/* Root element class-based theming */
-:root,
-:root.theme-dark {
-  /* Dark theme variables (default) */
-  --bg-primary: #0a1628;
-  /* ... other dark theme variables */
-}
-
-:root.theme-light {
-  /* Light theme variables */
-  --bg-primary: #f0f4f8;
-  /* ... other light theme variables */
-}
-
-/* Smooth transitions for theme changes */
-* {
-  transition: background-color 200ms ease,
-              color 0ms;  /* Instant text color change for readability */
-}
-```
+- Light theme variables defined on `:root` (default)
+- Dark theme variables defined on `body.dark`
+- Smooth transitions for backgrounds/borders (200ms), instant text color changes
 
 **Implementation**:
 - Theme preference stored in localStorage
-- Applied by adding/removing `theme-light` class on root element
+- Applied by adding/removing `dark` class on `document.body`
 - All colors reference CSS variables
 - PixiJS canvas background updates via JavaScript
-- Theme toggle button in PlotterConnection header
+- Theme toggle button in control panel
 
 ### WebSerial Communication
 - Request port on Connect button click (user activation required)

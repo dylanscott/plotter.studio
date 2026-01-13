@@ -1,0 +1,82 @@
+/* =============================================================================
+ * Theme System
+ *
+ * Light theme (default): Simulates dark pens on white paper
+ * Dark theme: Classic blueprint aesthetic for inverted/specialty plots
+ * ============================================================================= */
+
+:root {
+  /* Background & Surface */
+  --bg-primary: #f0f4f8;
+  --bg-secondary: #e8eef4;
+  --bg-surface: #ffffff;
+
+  /* Accent & Interactive */
+  --accent-primary: #0066cc;
+  --accent-bright: #003d7a;
+  --accent-attention: #cc8800;
+
+  /* Grid & Borders */
+  --grid-line: rgba(0, 102, 204, 0.08);
+  --border-subtle: rgba(0, 60, 122, 0.15);
+  --border-emphasis: rgba(0, 102, 204, 0.3);
+
+  /* Text */
+  --text-primary: #1a2332;
+  --text-secondary: rgba(26, 35, 50, 0.7);
+  --text-tertiary: rgba(26, 35, 50, 0.5);
+
+  /* Canvas */
+  --canvas-bg: #f8fbff;
+  --canvas-frame: #0066cc;
+  --canvas-path-default: #1a2332;
+
+  /* States */
+  --state-plotting: #00aa55;
+  --state-paused: #ff8800;
+  --state-error: #cc0033;
+}
+
+body.dark {
+  /* Background & Surface */
+  --bg-primary: #0a1628;
+  --bg-secondary: #0d1b2a;
+  --bg-surface: #1a2332;
+
+  /* Accent & Interactive */
+  --accent-primary: #00d9ff;
+  --accent-bright: #e0f7ff;
+  --accent-attention: #ffd700;
+
+  /* Grid & Borders */
+  --grid-line: rgba(0, 217, 255, 0.1);
+  --border-subtle: rgba(224, 247, 255, 0.15);
+  --border-emphasis: rgba(0, 217, 255, 0.4);
+
+  /* Text */
+  --text-primary: #e0f7ff;
+  --text-secondary: rgba(224, 247, 255, 0.6);
+  --text-tertiary: rgba(224, 247, 255, 0.4);
+
+  /* Canvas */
+  --canvas-bg: #0a1628;
+  --canvas-frame: #e0f7ff;
+  --canvas-path-default: #00d9ff;
+
+  /* States */
+  --state-plotting: #00ff88;
+  --state-paused: #ffaa00;
+  --state-error: #ff3366;
+}
+
+/* =============================================================================
+ * Theme Transitions
+ *
+ * Smooth background transitions, instant text changes for readability
+ * ============================================================================= */
+
+* {
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease;
+}
