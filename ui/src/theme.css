@@ -1,4 +1,41 @@
 /* =============================================================================
+ * Font Import
+ * ============================================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+/* =============================================================================
+ * Base Reset & Typography
+ * ============================================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --main-font: "IBM Plex Mono", monospace;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: var(--main-font);
+  font-size: 13px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* =============================================================================
  * Theme System
  *
  * Light theme (default): Simulates dark pens on white paper
