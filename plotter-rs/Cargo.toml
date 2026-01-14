@@ -5,4 +5,5 @@ publish = false
 
 [dependencies]
 kurbo = "0.13.0"
+serde = { version = "1.0.228", features = ["derive"] }
 usvg  = "0.46.0"
