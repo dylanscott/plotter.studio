@@ -1,29 +1,25 @@
 import type { Length } from "./units";
 
 /**
- * 2D point in inches (standard unit used for geometry)
+ * 2D point in inches
  */
 export type Point = [x: Length<"in">, y: Length<"in">];
 
-// ============================================================================
-// SVG Data Model (Simplified Polylines)
-// ============================================================================
-
 /**
- * After WASM digestion, all curves are converted to polyline approximations.
- * The tree structure is simplified to groups and polylines only.
+ * A simplified version of an SVG, which inherits group structure but where all
+   <path> elements have been replaced by polyline approximations.
  */
-export type Node = PolyLine | Group;
+export type SimplifiedSVG = PolyLine | Group;
 
 export interface PolyLine {
   type: "polyline";
-  id?: string; // from original SVG, if specified
+  id?: string;
   points: Point[];
   closed: boolean;
 }
 
 export interface Group {
   type: "group";
-  id?: string; // from original SVG, if specified
+  id?: string;
   children: Node[];
 }
