@@ -7,7 +7,7 @@ export type Point = [x: Length<"in">, y: Length<"in">];
 
 /**
  * A simplified version of an SVG, which inherits group structure but where all
-   <path> elements have been replaced by polyline approximations.
+ * <path> elements have been replaced by polyline approximations.
  */
 export type SimplifiedSVG = PolyLine | Group;
 
