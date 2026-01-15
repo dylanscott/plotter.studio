@@ -2,6 +2,8 @@ use serde::{Deserialize, Serialize};
 
 use crate::geometry::{approximate_path, BoundingBox, Polyline};
 
+pub use usvg::Error;
+
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(tag = "type", rename_all = "lowercase")]
 pub enum SimplifiedSvgNode {
@@ -44,7 +46,7 @@ pub struct DigestOptions {
 
 /// Parses and "digests" an SVG into a simplified form where all shapes have
 /// been replaced by approximations composed only of straight-line segments.
-pub fn digest_svg(text: &str, opt: &DigestOptions) -> Result<DigestResult, usvg::Error> {
+pub fn digest_svg(text: &str, opt: &DigestOptions) -> Result<DigestResult, Error> {
     let usvg_opt = usvg::Options {
         dpi: opt.dpi,
         ..Default::default()
