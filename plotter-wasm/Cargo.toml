@@ -7,4 +7,7 @@ publish = false
 crate-type = ["cdylib"]
 
 [dependencies]
-wasm-bindgen = "0.2.106"
+plotter            = { path = "../plotter-rs" }
+serde              = { version = "1.0.228", features = ["derive"] }
+serde-wasm-bindgen = "0.6.5"
+wasm-bindgen       = "0.2.106"
