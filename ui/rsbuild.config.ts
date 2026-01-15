@@ -2,7 +2,15 @@ import { defineConfig } from "@rsbuild/core";
 import { pluginSvelte } from "@rsbuild/plugin-svelte";
 
 export default defineConfig({
-  plugins: [pluginSvelte()],
+  plugins: [
+    pluginSvelte({
+      preprocessOptions: {
+        typescript: {
+          tsconfigFile: "./tsconfig.json",
+        },
+      },
+    }),
+  ],
   source: {
     entry: { index: "./src/index.ts" },
     define: {
