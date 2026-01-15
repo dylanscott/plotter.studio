@@ -1,1 +1,1 @@
-packages: ["plotter-api", "plotter-wasm", "ui"]
+packages: ["plotter-wasm", "ui"]

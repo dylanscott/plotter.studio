@@ -9,7 +9,6 @@
     "test": "rstest"
   },
   "dependencies": {
-    "plotter-api": "workspace:*",
     "plotter-wasm": "workspace:*"
   },
   "devDependencies": {

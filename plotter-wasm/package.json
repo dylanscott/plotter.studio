@@ -2,12 +2,19 @@
   "name": "plotter-wasm",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
+  "files": [
+    "pkg/index_bg.wasm",
+    "pkg/index.js",
+    "pkg/index_bg.js",
+    "pkg/index.d.ts"
+  ],
   "main": "pkg/index.js",
-  "types": "pkg/index.d.ts",
+  "types": "api/index.ts",
+  "sideEffects": [
+    "./pkg/index.js"
+  ],
   "scripts": {
     "build": "wasm-pack build --out-name index"
-  },
-  "dependencies": {
-    "plotter-api": "workspace:*"
   }
 }
