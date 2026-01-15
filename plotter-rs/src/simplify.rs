@@ -22,6 +22,7 @@ pub struct Group {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "camelCase")]
 pub struct DigestResult {
     /// The simplified SVG geometry, with all units converted to inches.
     pub geometry: Group,
@@ -31,6 +32,7 @@ pub struct DigestResult {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "camelCase")]
 pub struct DigestOptions {
     /// The scale factor used to convert SVG units to inches.
     pub dpi: f32,
