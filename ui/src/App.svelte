@@ -1,11 +1,16 @@
 <script lang="ts">
-  import CanvasContainer from "./components/CanvasContainer.svelte";
+  import type { Length } from "plotter-wasm";
+
+  import PreviewContainer from "./components/PreviewContainer.svelte";
   import ControlPanel from "./components/ControlPanel.svelte";
 </script>
 
 <div class="app">
-  <div class="canvas-container">
-    <CanvasContainer />
+  <div class="preview-container">
+    <PreviewContainer
+      plotterWidth={11 as Length<"in">}
+      plotterHeight={8.5 as Length<"in">}
+    />
   </div>
   <div class="control-panel">
     <ControlPanel />
@@ -20,7 +25,7 @@
     overflow: hidden;
   }
 
-  .canvas-container {
+  .preview-container {
     width: 65%;
     height: 100%;
   }
