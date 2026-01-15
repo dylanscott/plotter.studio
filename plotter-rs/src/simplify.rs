@@ -1,20 +1,27 @@
+use serde::{Deserialize, Serialize};
+
 use crate::geometry::{approximate_path, BoundingBox, Polyline};
 
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(tag = "type", rename_all = "lowercase")]
 pub enum SimplifiedSvgNode {
     Path(Path),
     Group(Group),
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Path {
     pub id: Option<String>,
     pub subpaths: Vec<Polyline>,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Group {
     pub id: Option<String>,
     pub children: Vec<SimplifiedSvgNode>,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct DigestResult {
     /// The simplified SVG geometry, with all units converted to inches.
     pub geometry: Group,
@@ -23,6 +30,7 @@ pub struct DigestResult {
     pub bounding_box: BoundingBox,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct DigestOptions {
     /// The scale factor used to convert SVG units to inches.
     pub dpi: f32,

@@ -1,12 +1,17 @@
+use serde::{Deserialize, Serialize};
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Point(pub f64, pub f64);
 
 // A shape consisting of straight-line segments, which may be closed (in which
 // case a line segment connects the first and last points).
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Polyline {
     pub points: Vec<Point>,
     pub closed: bool,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct BoundingBox {
     pub left: f64,
     pub top: f64,
