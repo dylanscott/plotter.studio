@@ -1,15 +1,11 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Clone, Copy, PartialEq, Debug)]
 pub struct Point(pub f64, pub f64);
 
-// A shape consisting of straight-line segments, which may be closed (in which
-// case a line segment connects the first and last points).
+// A shape consisting of straight-line segments
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Polyline {
-    pub points: Vec<Point>,
-    pub closed: bool,
-}
+pub struct Polyline(pub Vec<Point>);
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct BoundingBox {
@@ -24,25 +20,22 @@ pub struct BoundingBox {
 // All the heavy lifting is done by `kurbo::flatten`.
 pub fn approximate_path(path: &tiny_skia_path::Path, tolerance: f64) -> Vec<Polyline> {
     let mut subpaths: Vec<Polyline> = Vec::new();
-    let mut current_points: Vec<Point> = Vec::new();
-    let mut is_closed = false;
+    let mut segment: Vec<Point> = Vec::new();
 
     kurbo::flatten(KurboPath(path), tolerance, |el| match el {
         kurbo::PathEl::MoveTo(pt) => {
-            if !current_points.is_empty() {
-                subpaths.push(Polyline {
-                    points: std::mem::take(&mut current_points),
-                    closed: is_closed,
-                });
+            if !segment.is_empty() {
+                subpaths.push(Polyline(std::mem::take(&mut segment)));
             }
-            is_closed = false;
-            current_points.push(Point(pt.x, pt.y));
+            segment.push(Point(pt.x, pt.y));
         }
         kurbo::PathEl::LineTo(pt) => {
-            current_points.push(Point(pt.x, pt.y));
+            segment.push(Point(pt.x, pt.y));
         }
         kurbo::PathEl::ClosePath => {
-            is_closed = true;
+            if segment.len() > 1 && segment[0] != segment[segment.len() - 1] {
+                segment.push(segment[0]);
+            }
         }
         _ => {
             panic!("kurbo::flatten should only produce straight line segments!")
@@ -50,11 +43,8 @@ pub fn approximate_path(path: &tiny_skia_path::Path, tolerance: f64) -> Vec<Poly
     });
 
     // don't forget the last subpath
-    if !current_points.is_empty() {
-        subpaths.push(Polyline {
-            points: current_points,
-            closed: is_closed,
-        });
+    if !segment.is_empty() {
+        subpaths.push(Polyline(segment));
     }
 
     subpaths
