@@ -4,10 +4,18 @@ edition = "2024"
 publish = false
 
 [dependencies]
-kurbo          = "0.13.0"
-serde          = { version = "1.0.228", features = ["derive"] }
+kurbo = "0.13.0"
+serde = { version = "1.0.228", features = ["derive"] }
 tiny-skia-path = "0.11.4"
-usvg           = "0.46.0"
+uom = { version = "0.37.0", default-features = false, features = [
+  "autoconvert",
+  "f64",
+  "i32",
+  "si",
+  "serde",
+  "std",
+] }
+usvg = "0.46.0"
 
 [dev-dependencies]
 clap       = { version = "4.5.54", features = ["derive"] }
