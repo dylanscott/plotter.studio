@@ -27,7 +27,7 @@ pub struct Group {
 #[serde(rename_all = "camelCase")]
 pub struct DigestResult {
     /// The simplified SVG geometry, with all units converted to inches.
-    pub geometry: Group,
+    pub geometry: SimplifiedSvgNode,
 
     /// The bounding box of the geometry, in inches.
     pub bounding_box: BoundingBox,
@@ -64,7 +64,7 @@ pub fn digest_svg(text: &str, opt: &DigestOptions) -> Result<DigestResult, Error
     let geometry = convert_group(tree.root(), opt.curve_tolerance);
 
     Ok(DigestResult {
-        geometry,
+        geometry: SimplifiedSvgNode::Group(geometry),
         bounding_box,
     })
 }
