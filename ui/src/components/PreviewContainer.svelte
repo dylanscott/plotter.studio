@@ -1,7 +1,9 @@
 <script lang="ts">
-  import type { Length } from "plotter-wasm";
+  import { type Length, simplify } from "plotter-wasm";
   import { Application, Container } from "svelte-pixi";
 
+  import { type Layer, allSubpaths } from "../layer";
+  import PlotPreview from "./PlotPreview.svelte";
   import PlotterFrame from "./PlotterFrame.svelte";
 
   interface Props {
@@ -25,6 +27,23 @@
   let bodyStyles = window.getComputedStyle(document.body);
   let bgColor = bodyStyles.getPropertyValue("--bg-primary");
   let gridColor = bodyStyles.getPropertyValue("--text-primary");
+
+  let result = simplify(
+    `
+<svg viewBox="0 0 11 8.5" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50%" cy="50%" r="4" fill="transparent" stroke="black" stroke-width="0.1" />
+</svg>`,
+    {
+      dpi: 96,
+      curveTolerance: 0.002,
+    },
+  );
+  let mm = 0.04 as Length<"in">;
+  let layer: Layer = {
+    paths: allSubpaths(result.geometry),
+    color: "black",
+    thickness: mm,
+  };
 </script>
 
 <div class="pixi-container" bind:clientWidth={width} bind:clientHeight={height}>
@@ -35,6 +54,7 @@
         x={(width - scale * plotterWidth) / 2}
         y={(height - scale * plotterHeight) / 2}
       >
+        <PlotPreview layers={[layer]} />
         <PlotterFrame
           width={plotterWidth}
           height={plotterHeight}

@@ -24,5 +24,5 @@ export interface Path {
 export interface Group {
   type: "group";
   id?: string;
-  children: Node[];
+  children: SimplifiedSvgNode[];
 }
