@@ -4,11 +4,17 @@ use crate::units::length::inch;
 use crate::units::Length;
 
 #[derive(Serialize, Deserialize, Clone, Copy, PartialEq, Debug)]
-pub struct Point(pub Length, pub Length);
+pub struct Point {
+    pub x: Length,
+    pub y: Length,
+}
 
 impl Point {
     pub fn from_inches(x: f64, y: f64) -> Point {
-        Point(Length::new::<inch>(x), Length::new::<inch>(y))
+        Point {
+            x: Length::new::<inch>(x),
+            y: Length::new::<inch>(y),
+        }
     }
 }
 

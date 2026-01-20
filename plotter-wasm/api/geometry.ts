@@ -1,7 +1,10 @@
 import type { Length } from "./units";
 
 // see `plotter-rs/src/geometry.rs`
-export type Point = [x: Length<"in">, y: Length<"in">];
+export interface Point {
+  x: Length<"in">;
+  y: Length<"in">;
+}
 
 export type Polyline = Point[];
 

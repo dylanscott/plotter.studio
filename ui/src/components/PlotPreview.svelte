@@ -15,9 +15,9 @@
 
     for (const layer of layers) {
       for (const path of layer.paths) {
-        const [startX, startY] = path[0];
+        const { x: startX, y: startY } = path[0];
         graphics.moveTo(startX, startY);
-        for (const [x, y] of path.slice(1)) {
+        for (const { x, y } of path.slice(1)) {
           graphics.lineTo(x, y);
         }
         graphics.stroke({ color: layer.color, width: layer.thickness });
