@@ -1,8 +1,10 @@
+pub use usvg::Error;
+
 use serde::{Deserialize, Serialize};
 
 use crate::geometry::{approximate_path, BoundingBox, Polyline};
-
-pub use usvg::Error;
+use crate::units::length::inch;
+use crate::units::Length;
 
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(tag = "type", rename_all = "lowercase")]
@@ -55,10 +57,10 @@ pub fn digest_svg(text: &str, opt: &DigestOptions) -> Result<DigestResult, Error
 
     let bbox = tree.root().abs_bounding_box();
     let bounding_box = BoundingBox {
-        left: bbox.left() as f64,
-        top: bbox.top() as f64,
-        right: bbox.right() as f64,
-        bottom: bbox.bottom() as f64,
+        left: Length::new::<inch>(bbox.left() as f64),
+        top: Length::new::<inch>(bbox.top() as f64),
+        right: Length::new::<inch>(bbox.right() as f64),
+        bottom: Length::new::<inch>(bbox.bottom() as f64),
     };
 
     let geometry = convert_group(tree.root(), opt.curve_tolerance);

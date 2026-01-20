@@ -1,7 +1,16 @@
 use serde::{Deserialize, Serialize};
 
+use crate::units::length::inch;
+use crate::units::Length;
+
 #[derive(Serialize, Deserialize, Clone, Copy, PartialEq, Debug)]
-pub struct Point(pub f64, pub f64);
+pub struct Point(pub Length, pub Length);
+
+impl Point {
+    pub fn from_inches(x: f64, y: f64) -> Point {
+        Point(Length::new::<inch>(x), Length::new::<inch>(y))
+    }
+}
 
 // A shape consisting of straight-line segments
 #[derive(Serialize, Deserialize, Debug)]
@@ -9,10 +18,10 @@ pub struct Polyline(pub Vec<Point>);
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct BoundingBox {
-    pub left: f64,
-    pub top: f64,
-    pub right: f64,
-    pub bottom: f64,
+    pub left: Length,
+    pub top: Length,
+    pub right: Length,
+    pub bottom: Length,
 }
 
 // Approximates the Bézier path with a series of line segments. Each subpath
@@ -27,10 +36,10 @@ pub fn approximate_path(path: &tiny_skia_path::Path, tolerance: f64) -> Vec<Poly
             if !segment.is_empty() {
                 subpaths.push(Polyline(std::mem::take(&mut segment)));
             }
-            segment.push(Point(pt.x, pt.y));
+            segment.push(Point::from_inches(pt.x, pt.y));
         }
         kurbo::PathEl::LineTo(pt) => {
-            segment.push(Point(pt.x, pt.y));
+            segment.push(Point::from_inches(pt.x, pt.y));
         }
         kurbo::PathEl::ClosePath => {
             if segment.len() > 1 && segment[0] != segment[segment.len() - 1] {
